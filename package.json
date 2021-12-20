@@ -22,7 +22,10 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.15",
+<<<<<<< HEAD
     "mongoose-unique-validator": "^3.0.0",
+=======
+>>>>>>> 2d1f2e0230df3f12d07c3bb9fe96c95c4888b157
     "multer": "^1.4.4"
   }
 }

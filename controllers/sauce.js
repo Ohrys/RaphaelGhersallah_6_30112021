@@ -68,6 +68,7 @@ exports.deleteSauce = (req, res, next) => {
 };
 
 exports.likeSauce = (req, res, next) =>{
+<<<<<<< HEAD
         //req.body = -1 | 0 | 1 
         const statusLike = req.body.like;
         const userId = req.auth.userId;
@@ -118,4 +119,14 @@ exports.likeSauce = (req, res, next) =>{
             default:
                 console.log(`We encountred an error with that like value ${statusLike}`)
         }
+=======
+        Sauce.updateOne({ _id: req.params.id },
+            {
+                like : req.body.like,
+                usersLiked : req.body.userId,
+                _id:req.params.id
+            })
+         .then(() => res.status(200).json({message:'Sauce modifié !'}))
+        .catch(error => res.status(400).json({ error }));
+>>>>>>> 2d1f2e0230df3f12d07c3bb9fe96c95c4888b157
 };
