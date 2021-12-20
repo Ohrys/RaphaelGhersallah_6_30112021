@@ -4,12 +4,12 @@ const path = require('path');
 const app = express();
 
 // -- Connexion à la base MongoDB
-let pswd = 'cm9vdA=='; // process.env.DB_PSWD
-mongoose.connect('mongodb+srv://root:'+pswd+'@database.j2bn4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+ // process.env.DB_PSWD
+mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PSWD + '@database.j2bn4.mongodb.net/' + process.env.DB_NAME +'?retryWrites=true&w=majority',
  {useNewUrlParser:true,
   useUnifiedTopology:true})
  .then(() =>console.log('Connexion à mongoDB réussie !'))
-.catch(() =>console.log('Connexion à mongoDB échouée !!'));
+    .catch(() => console.log('Connexion à mongoDB échouée !!' + process.env.DB_USER + ' ' + process.env.DB_PSWD + ' ' + process.env.DB_NAME));
 
 // -- HEADERS de requête pour prévenir les erreurs CORS 
 app.use((req, res, next) => {
