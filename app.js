@@ -4,16 +4,15 @@ const path = require('path');
 const app = express();
 
 // -- Connexion à la base MongoDB
- // process.env.DB_PSWD
 mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PSWD + '@database.j2bn4.mongodb.net/' + process.env.DB_NAME +'?retryWrites=true&w=majority',
  {useNewUrlParser:true,
   useUnifiedTopology:true})
  .then(() =>console.log('Connexion à mongoDB réussie !'))
-    .catch(() => console.log('Connexion à mongoDB échouée !!' + process.env.DB_USER + ' ' + process.env.DB_PSWD + ' ' + process.env.DB_NAME));
+ .catch(() => console.log('Connexion à mongoDB échouée !!'));
 
 // -- HEADERS de requête pour prévenir les erreurs CORS 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Permet de créer un filtre sur qui peut requêter le back. 
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
@@ -33,7 +32,6 @@ const sauceRoutes = require('./routes/sauce');
 app.use('/api/auth', userRoutes);
 
 // ----- Route sauce -----
-
 app.use('/api/sauces', sauceRoutes);
 
 

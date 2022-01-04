@@ -2,7 +2,6 @@ const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
 // --- CRUD - Sauce : 
-
  exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
@@ -31,8 +30,6 @@ exports.getOneSauce = (req, res) => {
 };
 
 exports.modifySauce = (req, res, next) => {
-    //on précise l'id avec l'id passé en paramètre car on ne peut pas créer un nouvel objet avec new : ça générerait une erreur 
-    // car on essaye de modifier un champ immuable
     const sauceObject = req.file ? 
     {
         ...JSON.parse(req.body.sauce),
@@ -68,8 +65,7 @@ exports.deleteSauce = (req, res, next) => {
 };
 
 exports.likeSauce = (req, res, next) =>{
-<<<<<<< HEAD
-        //req.body = -1 | 0 | 1 
+        //req.body.like = -1 | 0 | 1 
         const statusLike = req.body.like;
         const userId = req.auth.userId;
         const isInside = (element) => element == userId;
@@ -119,14 +115,4 @@ exports.likeSauce = (req, res, next) =>{
             default:
                 console.log(`We encountred an error with that like value ${statusLike}`)
         }
-=======
-        Sauce.updateOne({ _id: req.params.id },
-            {
-                like : req.body.like,
-                usersLiked : req.body.userId,
-                _id:req.params.id
-            })
-         .then(() => res.status(200).json({message:'Sauce modifié !'}))
-        .catch(error => res.status(400).json({ error }));
->>>>>>> 2d1f2e0230df3f12d07c3bb9fe96c95c4888b157
 };
