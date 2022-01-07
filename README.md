@@ -14,8 +14,9 @@ Brièvement ces fonctionnalités sont :
 Pour faire fonctionner ce projet il est nécessaire d'effectuer certaines actions. 
 1. cloner le repository du front : [disponible ici](https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6)
 2. Créer un dossier `backend` et cloner ce repository. 
-3. Créer un fichier `process.env` en lieu et place du `process.env.example` avec les valeurs données ci-dessous. 
-4. exécuter à la fois dans le dossier front et dans le dossier backend la commande : 
+4. Créer un dossier `images` à la racine du `backend`. Il sert à stocker les images uploadé via le mutler. 
+5. Créer un fichier `process.env` en lieu et place du `process.env.example` avec les valeurs données ci-dessous. 
+6. exécuter à la fois dans le dossier front et dans le dossier backend la commande : 
 ```
 npm start
 ```
